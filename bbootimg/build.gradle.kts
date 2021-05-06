@@ -46,6 +46,7 @@ tasks {
         }
         from(configurations.runtimeClasspath.get().map({ if (it.isDirectory) it else zipTree(it) }))
         excludes.addAll(mutableSetOf("META-INF/*.RSA", "META-INF/*.SF", "META-INF/*.DSA"))
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
         dependsOn(":helper:jar")
     }
     test {
